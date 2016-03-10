@@ -12,11 +12,11 @@
         http://www.springframework.org/schema/context/spring-context.xsd 
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd"> 
-<!--    <context:annotation-config />
+    <context:annotation-config />
     <context:component-scan base-package="com.rd.pizzadeliveryservice.service"/>
-    <context:component-scan base-package="com.rd.pizzadeliveryservice.domain"/>-->
+    <context:component-scan base-package="com.rd.pizzadeliveryservice.domain"/>
 
-    <context:component-scan base-package="com.rd.pizzadeliveryservice.service" />
+    <!--<context:component-scan base-package="com.rd.pizzadeliveryservice.service" />-->
     <bean id="order" class="com.rd.pizzadeliveryservice.domain.Order" scope="prototype" />
      
     <tx:annotation-driven transaction-manager="transactionManager" />  	
