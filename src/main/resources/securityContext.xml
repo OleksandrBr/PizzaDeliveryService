@@ -7,33 +7,34 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 	
-	<http pattern="/rest/**" create-session="stateless">
-		<intercept-url pattern="/**" access="hasRole('USER')"/>
-		<http-basic/>
-		<csrf disabled="true"/>
-	</http>
+    <http pattern="/rest/**" create-session="stateless">
+        <intercept-url pattern="/**" access="hasRole('USER')"/>
+        <http-basic/>
+        <csrf disabled="true"/>
+    </http>
 	
-	<http>
-		<intercept-url pattern="/login.jsp" access="isAnonymous()"/>
-		<intercept-url pattern="/jsp/" access="isAnonymous()"/>
-		<intercept-url pattern="/**" access="hasRole('USER')"/>
-		<intercept-url pattern="/**" access="isAuthenticated()"/>
-		<form-login login-page='/login.jsp' default-target-url="/jsp/pizza/show" always-use-default-target="true"/>
-		<logout logout-url="/logout" invalidate-session="true" logout-success-url="/spring_security_login" />	
-	</http>
+    <http>
+        <intercept-url pattern="/login.jsp" access="isAnonymous()"/>
+        <intercept-url pattern="/jsp/" access="isAnonymous()"/>
+        <intercept-url pattern="/**" access="hasRole('USER')"/>
+        <intercept-url pattern="/**" access="isAuthenticated()"/>
+        <form-login login-page='/login.jsp' default-target-url="/jsp/pizza/show" always-use-default-target="true"/>
+        <logout logout-url="/logout" invalidate-session="true" logout-success-url="/spring_security_login" />	
+    </http>
 	
-	 <!--    <http auto-config="true" use-expressions="false">
+    <!--    <http auto-config="true" use-expressions="false">
         <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/**" access="ROLE_USER" />
         <form-login login-page='/login.jsp' default-target-url="/index.jsp" always-use-default-target="true"/>
         <logout logout-url="logout" invalidate-session="true" logout-success-url="/spring_security_login" />
     </http>-->
 	
-	<authentication-manager>
+    <authentication-manager>
         <authentication-provider>
             <user-service>
-                <user name="sas" password="123" authorities="ROLE_USER, ROLE_ADMIN" />
+                <user name="sas" password="123" authorities="ROLE_ADMIN,ROLE_USER" />
                 <user name="bob" password="456" authorities="ROLE_USER" />
+                <user name="john" password="789" disabled="true" authorities="ROLE_USER" />
             </user-service>
         </authentication-provider>
     </authentication-manager>
